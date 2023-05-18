@@ -1,10 +1,30 @@
-#include <stdio.h>
-#include <stdint.h>
+#include "stdio.h"
+#include "stdint.h"
 
+typedef enum{
+    pin0,
+    pin1,
+    pin2,
+    pin3,
+    pin4,
+    pin5,
+    pin6,
+    pin7,
+}pins;
 
-void readByte(uint8_t byte){            
-    
-    uint8_t temp = 0b10000000;          
+uint8_t porta = 0b00000000;
+uint8_t portb = 0b11111111;
+
+void pinHigh(pins pin){
+    porta |=  (0b10000000 >> pin);
+}
+
+void pinLow(pins pin){
+    portb &=  ~(10000000 >> pin);
+}
+
+void readBit(uint8_t byte){
+    uint8_t temp = 0b10000000;
     uint8_t kq;
     printf("0b");
     for (uint8_t i = 0; i < 8; i++)
@@ -17,13 +37,15 @@ void readByte(uint8_t byte){
         }
         byte = byte << 1;
     }
-}    
-
+    printf("\n");
+    
+}
 
 int main(int argc, char const *argv[])
 {
-    uint8_t test = 0b11001001;
-    readByte(test);
-
-    return 0;
+    pinHigh(pin3);
+    readBit(porta);
+    pinLow(pin3);
+    readBit(portb);
+    
 }

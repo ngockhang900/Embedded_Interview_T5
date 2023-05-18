@@ -42,6 +42,8 @@ uint8_t *ptr = (uint8_t *)malloc(sizeof (uint8_t) * size);
 ```c
   ptr = (uint8_t *)realloc(ptr, sizeof(uint8_t) * size);
 ```
+***
+
 
 
 
