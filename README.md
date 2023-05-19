@@ -64,7 +64,7 @@ uint8_t *ptr = (uint8_t *)malloc(sizeof (uint8_t) * size);
 
 - **OR: x = y | z;**
 
-| A| B | A `|` B |
+| A| B | A OR B |
 | :--- | :--- | :-
 | 0 | 0 | 0 | 
 | 1 | 0 | 1 | 
