@@ -54,21 +54,21 @@ void pinLow(pins pin){
     printf("\n");
 }
 
-void *readBit(uint8_t byte){
-    uint8_t kq;
-    printf("0b");
-    for (uint8_t i = 0; i < 8; i++)
-    {
-        kq = byte & 0b10000000;
-        if(kq == 0){
-            printf("0");
-        }else{
-            printf("1");
-        }
-        byte = byte << 1;
-    }
-    printf("\n");
-}
+// void readBit(uint8_t byte){
+//     uint8_t kq;
+//     printf("0b");
+//     for (uint8_t i = 0; i < 8; i++)
+//     {
+//         kq = byte & 0b10000000;
+//         if(kq == 0){
+//             printf("0");
+//         }else{
+//             printf("1");
+//         }
+//         byte = byte << 1;
+//     }
+//     printf("\n");
+// }
 
 void digitalWrite(pins pin, s_status status){
     if(status == High){
