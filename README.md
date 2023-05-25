@@ -215,7 +215,7 @@ portD ^= (1 << n);
 ```
 ***
 ## Struct
-- Là kiểu dữ liệu người dùng tự định nghĩa
+- Là kiểu dữ liệu do người dùng tự định nghĩa
 - Cách khai báo và cách tính kích thước của Struct.
 ```c
 struct mang{ 
@@ -226,6 +226,9 @@ struct mang{
     uint8_t arr4[4];  //1*4 = 4 mà ở lần quét thứ ba còn dư 4 byte bộ nhớ đệm nên arr4[4] được cộng vào lần thứ ba.
 }; // tổng size của struct mang là 64
 ```
+***
+## Union
+- Là kiểu dữ liệu do người dùng tự định nghĩa
 
 
 
