@@ -242,13 +242,8 @@ struct mang{
 -	Thông một biến từ một file khác sang cái file mà mình muốn.
 -	Khi khai báo từ khóa Extern thì mình sẽ không được gán giá trị cho nó.
 -	Khi dùng Extern thì 2 biến khác file là 1, nó được trỏ tới cùng 1 vùng nhớ.
-
-
-
-
-
-
-
+***
+## Pointer
 
 
 
