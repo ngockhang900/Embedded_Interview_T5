@@ -1,10 +1,21 @@
 #include "stdio.h"
+#include "stdint.h"
 
 
-char c = "khang ";
+extern void dem();
+
+void test(){
+    static int a = 10;
+    printf("a = %d\n", a);
+    a++;
+}
 
 int main(int argc, char const *argv[])
 {
-    printf("c = %s",c );
+    test();
+    test();
+    test();
+
+    dem();
     return 0;
 }

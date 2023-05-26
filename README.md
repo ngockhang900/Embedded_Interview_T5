@@ -215,8 +215,9 @@ portD ^= (1 << n);
 ```
 ***
 ## Struct
-- Là kiểu dữ liệu do người dùng tự định nghĩa
-- Cách khai báo và cách tính kích thước của Struct.
+- Là kiểu dữ liệu do người dùng tự định nghĩa.
+- Kích thước của Struct là bằng tổng kích thước của các member cộng lại cộng thêm bộ nhớ đệm (nếu có).
+- Cách khai báo và cách tính kích thước của Struct:
 ```c
 struct mang{ 
 // trong các member thì 64 bit (8 byte) là lớn nhất nên một lần quét sẽ là 8 byte 
@@ -228,7 +229,21 @@ struct mang{
 ```
 ***
 ## Union
-- Là kiểu dữ liệu do người dùng tự định nghĩa
+- Là kiểu dữ liệu do người dùng tự định nghĩa.  
+- Kích thước của Union là kích thước của member lớn nhất có trong Union.
+- Union là bộ nhớ dùng chung nên khi thay đổi giá trị của một member này thì sẽ ảnh hưởng đến kết quả của những member khác.
+- Ứng dụng của Union trong thực tế là thiết kế một kiểu dữ liệu mà chỉ được phép chọn 1 trong đó.
+***
+## Static
+- **Static cục bộ:** Khi một biến cục bộ được khai báo với từ khóa Static. Thì biến đó sẽ chỉ khỏi tạo một lần duy nhất và tồn tại suốt thời gian chạy chương trình. Giá trị của nó không bị mất đi ngay cả khi kết thúc hàm. Tuy nhiên khác với biến toàn cục có thể gọi trong tất cả mọi nơi trong chương trình, thì biến cục bộ Static chỉ có thể được gọi trong nội bộ hàm khỏi tạo ra nó. Mỗi lần hàm được gọi, giá trị của biến chính bằng giá trị tại lần gần nhất hàm được gọi.
+- **Static toàn cục:** Biến toàn cục Static sẽ chỉ có thể được truy cập và sử dụng trong file khai báo nó, các file khác không có cách nào truy cập được. 
+***
+## Extern 
+-	Thông một biến từ một file khác sang cái file mà mình muốn.
+-	Khi khai báo từ khóa Extern thì mình sẽ không được gán giá trị cho nó.
+-	Khi dùng Extern thì 2 biến khác file là 1, nó được trỏ tới cùng 1 vùng nhớ.
+
+
 
 
 
