@@ -28,9 +28,13 @@ Trong quá trình chạy ở trên RAM thì RAM sẽ chia ra 5 phân vùng nhớ
 | Text|
 
 **1. Phân vùng nhớ Text**: chỉ được Read chứ không được Write data Và lưu thêm một biến nữa gọi là biến hằng số **( const)**.
+
 **2. Phân vùng nhớ Data**: có thể được Read và Write data, chứa biến toàn cục (là biến nằm ngoài các function ) hoặc biến static với giá trị khởi tạo khác không. Được giải phóng khi kết thúc chương trình.
+
 **3. Phân vùng nhớ Bss**: có thể được Read và Write, chứa biến toàn cục hoặc biến static với giá trị khởi tạo bằng không hoặc không khởi tạo. Được giải phóng khi kết thúc chương trình.
+
 **4. Phân vùng nhớ Stack**: có thể được Read và Write, được sử dụng cấp phát có biến local ( Biến local chỉ tồn tại trong hàm mà biến được khai báo, đôi khi, biến local được gọi là biến tự động (auto) bởi vì các biến được tự động sinh ra khi hàm được thực hiện và sẽ tự động biến mất khi kết thúc hàm.), input parameter của hàm,... Được giải phóng khi ra khỏi block code/hàm.
+
 **5. Phân vùng nhớ Heap**: có thể được Read và Write, được sử dụng cấp phát bộ nhớ động như: Malloc, Calloc, Realloc,...Được giải phóng khi gọi hàm `free()`
 
 :star: Cấp phát động:
@@ -245,9 +249,76 @@ struct mang{
 ***
 ## Pointer
 
+### Các loại con trỏ:
+- ***Con trỏ NULL:*** Con trỏ NULL là con trỏ lưu địa chỉ 0x00000000. Tức địa chỉ bộ nhớ 0, có ý nghĩa đặc biệt, cho biết con trỏ không trỏ vào đâu cả.
+	```c
+	int *p1; //con trỏ chưa khởi tạo, vẫn trỏ đến một vùng nhớ rác nào đó không xác định
+	int *p2 = NULL; //con trỏ null không trỏ đến vùng nhớ nào
+	int *p3 = null; // Lỗi "null" phải viết in hoa
+	```
+- ***Con trỏ đến con trỏ(pointer to pointer):*** Con trỏ này dùng để lưu địa chỉ của con trỏ khác.
+	```c
+	int a = 10;
+    int *p1 = &a;   // *p1 = *&a = a  
+    int **p2 = &p1; //**p2 = *&p1 = p1
 
+    printf("Gia tri cua x: %d\n", *p1);
+    printf("Dia chi cua x: %p\n", p1); 
+    printf("Gia tri cua p1: %d\n", **p2); 
+    printf("Dia chi cua p1: %p\n", p2);
+ 	return 0; 
+	```
+- ***Con trỏ hằng (Constant Pointers):*** Không thể thay đổi giá trị mà nó trỏ tới, nhưng có thể thay đổi địa chỉ mà nó trỏ tới.
 
+```c
+int a = 10; 
+const int *ptr = &num; //thay đổi được địa chỉ của a nhưng không thay đổi được giá trị '10' của a
+```
 
+- ***Con trỏ void (Void Pointers):*** Con trỏ void có thể trỏ tới bất kỳ kiểu dữ liệu nào, nhưng khi xuất ra giá trị thì phải ép kiểu.
+```c
+    int i = 10;
+    char c = 'A';
+    void *p; // con trỏ void là con trỏ đặt biệt nó có thể trỏ đến mọi địa chỉ nhưng ko in ra giá trị được
+    // để lấy giá trị được thì phải ép kiểu 
+    p = &i;
+    printf("i = %d\n", *(int *)p);
+    p = &c;
+    printf("c = %c\n", *(char *)p);
+    p = &tong; 
+    ((void(*)(int, int))p)(4,3);
+```
+- ***Con trỏ hàm (Function Pointers):*** Dùng để lưu trữ và gọi các hàm thông qua con trỏ.
+	```c
+	void tong(int a, int b){
+    printf("Tong %d va %d = %d\n", a, b, a + b);
+    }
+	int main() {
+        void(* ptr)(int, int) = NULL;
+	    ptr = &tong;
+        ptr(9,7);
+		return 0;
+	}
 
+	```
+- ***Con trỏ hàm parameter (Function Pointer Parameters):*** Truyền một hàm như một tham số cho một hàm khác.
+    ```c
+    void tong(int a, int b){
+        printf("Tong %d va %d = %d\n", a, b, a + b);
+    }
 
+    void tinhToan(int a, int b, void( *phepTinh)(int, int)){
+        printf("Chuong trinh toan:\n");
+    phepTinh(a, b);
+    }
+
+    int main() {
+	    tinhToan(2,3,tong);
+	    return 0;
+    }
+    ```
+#### Lưu ý khi sử dụng con trỏ
+- Khi khởi tạo con trỏ NULL: Chữ NULL phải viết hoa, viết thường null sẽ bị lỗi.
+- Không nên sử dụng con trỏ khi chưa được khởi tạo: Kết quả tính toán có thể sẽ phát sinh những lỗi không lường trước được nếu chưa khởi tạo con trỏ.
+- Sử dụng biến con trỏ sai cách.
 
