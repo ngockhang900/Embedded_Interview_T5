@@ -26,20 +26,16 @@ int lanXuatHien(uint8_t array[],uint8_t size)
     uint8_t dem = 0;
     uint8_t chuan = array[0];
 
-	for (int i = 0; i < size; i++)
-	{
-		if (array[i]==chuan)
-		{
+	for (int i = 0; i < size; i++){
+		if (array[i]==chuan){
 			dem++;
 		}
-		if (chuan!=array[i])
-		{
+		if (chuan!=array[i]){
 			printf("\nSo %d xuat hien %d lan", array[i-1], dem);
 			chuan = array[i];
 			dem = 1;
 		}
-		if (i==size-1)
-		{
+		if(i==size-1){
 			printf("\nSo %d xuat hien %d lan", array[i], dem);
 
 		}
