@@ -1,6 +1,8 @@
+
 # **Embedded_Interview_T5**
-***
-## Compiler
+<details>
+	<summary><h3>Compiler</h3></summary>
+	
 Dịch từ ngôn ngữ do lập trình viên viết (C/C++, PHP, HTML,... ) sang ngôn ngữ máy.
  - **Quá trình Compiler:**
  
@@ -14,8 +16,13 @@ Tiếp theo là quá trình **Compiler** sẽ biến file `(*.i)` thành file `(
 Tiếp đến là quá trình **Assembler** sẽ biến file `(*.s)` thành file `(*.o)` (được gọi là Object files).
 
 Kế tiếp là quá trình **Linker** sẽ kết hợp file `(*.o)` và các `Libraries` lại với nhau tạo thành file `(*.exe)` (được gọi Executable) chạy trên window.
+</details>
+
 ***
-## Phân vùng nhớ
+
+<details>
+	<summary><h3>Phân Vùng Nhớ</h3></summary>
+
 Chương trình sẽ chạy trên RAM, lưu trữ là lưu trữ trên ROM.
 Trong quá trình chạy ở trên RAM thì RAM sẽ chia ra 5 phân vùng nhớ.
 
@@ -40,14 +47,22 @@ Trong quá trình chạy ở trên RAM thì RAM sẽ chia ra 5 phân vùng nhớ
 :star: Cấp phát động:
 - `malloc` là tạo một mảng ban đầu. Cú pháp:
 ```c
-uint8_t *ptr = (uint8_t *)malloc(sizeof (uint8_t) * size); 
+uint8_t *ptr = (uint8_t *)malloc(sizeof (uint8_t) * size);
 ```
 - `realloc` là để tăng giảm thay đổi kích thước của mảng. Cú pháp:
 ```c
   ptr = (uint8_t *)realloc(ptr, sizeof(uint8_t) * size);
 ```
+</details>
+
 ***
-## Macro
+
+<details>
+	<summary><h3>Macro, Function, InlineFunction</h3></summary>
+	<ul>
+		<details>
+			<summary>Macro</summary>
+
 Được diễn ra ở quá trình tiền xử lý. Bản chất của Macro là thay thế đoạn code được khai báo macro `#define` vào bất cứ chỗ nào xuất hiện macro đó.
 
 Macro không phải là hàm cũng không phải là biến nó chỉ là một định nghĩa.
@@ -125,8 +140,90 @@ int main(int argc, char const *argv[])
     return 0;
 }
 ```
-***
- ## Function
+		</details>
+	</ul>
+ 
+Được diễn ra ở quá trình tiền xử lý. Bản chất của Macro là thay thế đoạn code được khai báo macro `#define` vào bất cứ chỗ nào xuất hiện macro đó.
+
+Macro không phải là hàm cũng không phải là biến nó chỉ là một định nghĩa.
+
+Khi dùng Macro thì cái size của chương trình sẽ lớn. Nhưng tốc độ xử lý nhanh.
+- Ví dụ:
+Ta có file `main.c` có khai báo Macro như sau:
+```c
+#define MAX 100
+
+int main(int argc, char const *argv[])
+{
+    printf("MAX = %d", MAX);
+
+    uint8_t a = MAX + 50;
+
+    return 0;
+} 
+```
+Sau khi qua quá trình tiền xử lý, thì trong file `main.i` , ở đâu có chứ **MAX** thì sẽ được thay thế bằng **100**.
+```c
+int main(int argc, char const *argv[])
+{
+    printf("MAX = %d", 100);
+
+    uint8_t a = 100 + 50;
+
+    return 0;
+}
+```
+- Ngoài ra thì Macro còn có thể định nghĩa được một hàm theo kiểu Macro
+```c
+#define SUM(a,b) a+b 
+
+int main(int argc, char const *argv[])
+{
+    printf("Tong a va b = %d\n", SUM(9,10));
+
+    return 0;
+} 
+```
+Thì trong file `main.i` nó cũng thay thế **SUM(9,10)** bằng **9+10**
+```c
+int main(int argc, char const *argv[])
+{
+    printf("Tong a va b = %d\n", 9+10);
+    
+    return 0;
+}
+```
+- Còn có thể viết như thế này: 
+```c
+#define CREATE(Ten_ham, noi_dung)    \
+void Ten_ham(){                      \
+    printf("%s\n", noi_dung);        \
+}
+// Ở trong Macro để viết chương trình có thể xuống dòng thì ta dùng dấu `\`.
+CREATE(test,"Day la ham Macro");
+
+int main(int argc, char const *argv[])
+{
+    test();
+    return 0;
+} 
+```
+Như ta thấy khi qua quá trình tiền xử lý thì trong file `main.i` nó sẽ tạo ra một hàm.
+```c
+void test(){
+   printf("%s\n", "Day la ham Macro"); 
+   }
+
+int main(int argc, char const *argv[])
+{
+    test();
+    return 0;
+}
+```
+</details>
+
+<details>
+	 <summary>Function</summary>
  Cách một hàm hoạt động với vi xử lý là 8bit (1byte) ta xem hình dưới đây:
 
 ![](https://i.imgur.com/EwfiXUw.png)
@@ -143,16 +240,21 @@ Khi Programe Couter đang chạy, đột ngột chuyển đến một địa ch�
 Sau khi thực hiện xong thì vào Stack Pointer để lấy địa chỉ đã lưu và gán cho Programe Couter. Sau đó Programe Couter sẽ tiếp tục đếm.
 
 :star: Function bình thường là một địa chỉ cố định và phải cần sử dụng Programe Couter và Stack Pointer để trỏ được con trỏ PC. Suy ra làm cho tốc độ xử lý của chương trình chậm. Size sẽ nhỏ.
-***
-## Inline Function
+</details>
+
+<details>
+	<summary>Inline Function</summary>
 
 - Qua quá trình Compiler thì được build qua mã máy lúc này máy tính đã hiểu được chương trình rồi. Thì chỉ cần gán cái đoạn chương trình (mã máy) vào đúng cái vị trí mà hàm được gọi. Nên vẫn theo quy luật của Programe Couter, chạy từ trên xuống dưới chứ ko cần phải trỏ.
 
 - Làm cho kích thước của file lớn hơn nhưng tốc độ xử lý sẽ nhanh hơn.
-
+</details>
+</details>
 
 ***
-## Thao Tác Bit
+
+<details>
+	<summary><h3>Thao Tác Bit</h3></summary>
 - **AND: x = y & z;**
 
 | A| B | A & B |
@@ -217,8 +319,12 @@ ngược lại nếu đếm bit 0 đến bit 7 từ phải sang trái thì ta l�
 ```c
 portD ^= (1 << n);
 ```
+</details>
+
 ***
-## Struct
+
+<details>
+	<summary>Struct</summary>
 - Là kiểu dữ liệu do người dùng tự định nghĩa.
 - Kích thước của Struct là bằng tổng kích thước của các member cộng lại cộng thêm bộ nhớ đệm (nếu có).
 - Cách khai báo và cách tính kích thước của Struct:
@@ -231,24 +337,40 @@ struct mang{
     uint8_t arr4[4];  //1*4 = 4 mà ở lần quét thứ ba còn dư 4 byte bộ nhớ đệm nên arr4[4] được cộng vào lần thứ ba.
 }; // tổng size của struct mang là 64
 ```
+</details>
+
 ***
-## Union
+
+<details>
+	<summary>Union</summary>
 - Là kiểu dữ liệu do người dùng tự định nghĩa.  
 - Kích thước của Union là kích thước của member lớn nhất có trong Union.
 - Union là bộ nhớ dùng chung nên khi thay đổi giá trị của một member này thì sẽ ảnh hưởng đến kết quả của những member khác.
 - Ứng dụng của Union trong thực tế là thiết kế một kiểu dữ liệu mà chỉ được phép chọn 1 trong đó.
+</details>
+
 ***
-## Static
+
+<details>
+	<summary>Static</summary>
 - **Static cục bộ:** Khi một biến cục bộ được khai báo với từ khóa Static. Thì biến đó sẽ chỉ khỏi tạo một lần duy nhất và tồn tại suốt thời gian chạy chương trình. Giá trị của nó không bị mất đi ngay cả khi kết thúc hàm. Tuy nhiên khác với biến toàn cục có thể gọi trong tất cả mọi nơi trong chương trình, thì biến cục bộ Static chỉ có thể được gọi trong nội bộ hàm khỏi tạo ra nó. Mỗi lần hàm được gọi, giá trị của biến chính bằng giá trị tại lần gần nhất hàm được gọi.
 - **Static toàn cục:** Biến toàn cục Static sẽ chỉ có thể được truy cập và sử dụng trong file khai báo nó, các file khác không có cách nào truy cập được. 
+</details>
+
 ***
-## Extern 
+
+<details>
+	<summary>Extern</summary>
 -	Thông một biến từ một file khác sang cái file mà mình muốn.
 -	Khi khai báo từ khóa Extern thì mình sẽ không được gán giá trị cho nó.
 -	Khi dùng Extern thì 2 biến khác file là 1, nó được trỏ tới cùng 1 vùng nhớ.
-***
-## Pointer
+</details>
 
+***
+
+<details>
+	<summary>Pointer</summary>
+	
 ### Các loại con trỏ:
 - ***Con trỏ NULL:*** Con trỏ NULL là con trỏ lưu địa chỉ 0x00000000. Tức địa chỉ bộ nhớ 0, có ý nghĩa đặc biệt, cho biết con trỏ không trỏ vào đâu cả.
 	```c
@@ -321,4 +443,5 @@ const int *ptr = &num; //thay đổi được địa chỉ của a nhưng không
 - Khi khởi tạo con trỏ NULL: Chữ NULL phải viết hoa, viết thường null sẽ bị lỗi.
 - Không nên sử dụng con trỏ khi chưa được khởi tạo: Kết quả tính toán có thể sẽ phát sinh những lỗi không lường trước được nếu chưa khởi tạo con trỏ.
 - Sử dụng biến con trỏ sai cách.
+</details>
 
