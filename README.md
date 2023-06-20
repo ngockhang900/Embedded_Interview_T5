@@ -18,8 +18,6 @@ Tiếp đến là quá trình **Assembler** sẽ biến file `(*.s)` thành file
 Kế tiếp là quá trình **Linker** sẽ kết hợp file `(*.o)` và các `Libraries` lại với nhau tạo thành file `(*.exe)` (được gọi Executable) chạy trên window.
 </details>
 
-***
-
 <details>
 	<summary><h3>Phân Vùng Nhớ</h3></summary>
 
@@ -54,8 +52,6 @@ uint8_t *ptr = (uint8_t *)malloc(sizeof (uint8_t) * size);
   ptr = (uint8_t *)realloc(ptr, sizeof(uint8_t) * size);
 ```
 </details>
-
-***
 
 <details>
 	<summary><h3>Macro, Function, InlineFunction</h3></summary>
@@ -251,8 +247,6 @@ Sau khi thực hiện xong thì vào Stack Pointer để lấy địa chỉ đã
 </details>
 </details>
 
-***
-
 <details>
 	<summary><h3>Thao Tác Bit</h3></summary>
 - **AND: x = y & z;**
@@ -321,10 +315,8 @@ portD ^= (1 << n);
 ```
 </details>
 
-***
-
 <details>
-	<summary>Struct</summary>
+	<summary><h3>Struct</h3></summary>
 - Là kiểu dữ liệu do người dùng tự định nghĩa.
 - Kích thước của Struct là bằng tổng kích thước của các member cộng lại cộng thêm bộ nhớ đệm (nếu có).
 - Cách khai báo và cách tính kích thước của Struct:
@@ -339,37 +331,29 @@ struct mang{
 ```
 </details>
 
-***
-
 <details>
-	<summary>Union</summary>
+	<summary><h3>Union</h3></summary>
 - Là kiểu dữ liệu do người dùng tự định nghĩa.  
 - Kích thước của Union là kích thước của member lớn nhất có trong Union.
 - Union là bộ nhớ dùng chung nên khi thay đổi giá trị của một member này thì sẽ ảnh hưởng đến kết quả của những member khác.
 - Ứng dụng của Union trong thực tế là thiết kế một kiểu dữ liệu mà chỉ được phép chọn 1 trong đó.
 </details>
 
-***
-
 <details>
-	<summary>Static</summary>
+	<summary><h3>Static</h3></summary>
 - **Static cục bộ:** Khi một biến cục bộ được khai báo với từ khóa Static. Thì biến đó sẽ chỉ khỏi tạo một lần duy nhất và tồn tại suốt thời gian chạy chương trình. Giá trị của nó không bị mất đi ngay cả khi kết thúc hàm. Tuy nhiên khác với biến toàn cục có thể gọi trong tất cả mọi nơi trong chương trình, thì biến cục bộ Static chỉ có thể được gọi trong nội bộ hàm khỏi tạo ra nó. Mỗi lần hàm được gọi, giá trị của biến chính bằng giá trị tại lần gần nhất hàm được gọi.
 - **Static toàn cục:** Biến toàn cục Static sẽ chỉ có thể được truy cập và sử dụng trong file khai báo nó, các file khác không có cách nào truy cập được. 
 </details>
 
-***
-
 <details>
-	<summary>Extern</summary>
+	<summary><h3>Extern</h3></summary>
 -	Thông một biến từ một file khác sang cái file mà mình muốn.
 -	Khi khai báo từ khóa Extern thì mình sẽ không được gán giá trị cho nó.
 -	Khi dùng Extern thì 2 biến khác file là 1, nó được trỏ tới cùng 1 vùng nhớ.
 </details>
 
-***
-
 <details>
-	<summary>Pointer</summary>
+	<summary><h3>Pointer</h3></summary>
 	
 ### Các loại con trỏ:
 - ***Con trỏ NULL:*** Con trỏ NULL là con trỏ lưu địa chỉ 0x00000000. Tức địa chỉ bộ nhớ 0, có ý nghĩa đặc biệt, cho biết con trỏ không trỏ vào đâu cả.
