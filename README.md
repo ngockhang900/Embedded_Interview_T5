@@ -378,7 +378,7 @@ const int *ptr = &num; //thay đổi được địa chỉ của a nhưng không
 			protected: Class con kế thừa có thể sử dụng member trong protected 
 		</ul>
   	- Constructor: tên khai báo của nó sẽ trùng với tên Class, thường được code đầu tiền và nằm trong public, nó có thể có tham số đầu vào hoặc ko có tham số đầu vào. Khi tạo một object thì constructor sẽ khởi tạo đầu tiền. Ứng dụng là khi muốn set thông số khỏi tạo thông số đầu tiên<br>
-   	:star: Kế thừa public: có thể ghi đề ( 
+   	:star: Kế thừa public: có thể ghi đề<br>
  	- Khai báo Class:
   
   ```c++
