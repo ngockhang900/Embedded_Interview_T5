@@ -346,7 +346,7 @@ const int *ptr = &num; //thay đổi được địa chỉ của a nhưng không
 
 	```
 - ***Con trỏ hàm parameter (Function Pointer Parameters):*** Truyền một hàm như một tham số cho một hàm khác.
-    ```c
+    ```c++
     void tong(int a, int b){
         printf("Tong %d va %d = %d\n", a, b, a + b);
     }
@@ -365,5 +365,29 @@ const int *ptr = &num; //thay đổi được địa chỉ của a nhưng không
 - Khi khởi tạo con trỏ NULL: Chữ NULL phải viết hoa, viết thường null sẽ bị lỗi.
 - Không nên sử dụng con trỏ khi chưa được khởi tạo: Kết quả tính toán có thể sẽ phát sinh những lỗi không lường trước được nếu chưa khởi tạo con trỏ.
 - Sử dụng biến con trỏ sai cách.
+</details>
+
+<details>
+	<summary><h3>Class</h3></summary>
+	- Class là kiểu dữ liệu do người dùng tự định nhưng nó khác với Struct về nhiều thứ.<br>
+	- Cấu trúc của một Class sẽ gồm: Đầu tiền là class, sau đó là tên class, tiếp theo là phạm vi truy cập, rồi tới member ( member có thể là variable, hàm, array ).<br>
+	- Phạm vi truy cập:
+		<ul>
+			public: được truy cập từ bên ngoài vào một cách tùy ý là cho phép bên ngoài nhìn thấy và có thể sử dụng một cách trực <br>
+			private: chỉ có thể được nhìn thấy và sử dụng ở bên trong nội bộ của class đó thôi <br>
+			
+		</ul>
+  	- Constructor: tên khai báo của nó sẽ trùng với tên Class, thường được code đầu tiền và nằm trong public, nó có thể có tham số đầu vào hoặc ko có tham số đầu vào. Khi tạo một object thì constructor sẽ khởi tạo đầu tiền 
+ 	- Khai báo Class:
+  
+  ```c++
+	 class SinhVien(){
+		public:				// được gọi là phạm vi truy cập
+			int tuoi;		// được gọi là property
+			int lop;
+			void desplay();		// được gọi là methor 
+ 	};	
+ ```
+	
 </details>
 
