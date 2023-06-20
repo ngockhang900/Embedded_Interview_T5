@@ -172,6 +172,7 @@ Sau khi thực hiện xong thì vào Stack Pointer để lấy địa chỉ đã
 
 ***
 
+</ul>
 </details>
 
 <details>
@@ -243,7 +244,10 @@ portD ^= (1 << n);
 </details>
 
 <details>
-	<summary><h3>Struct</h3></summary>
+	<summary><h3>Struct, Union</h3></summary>
+	<ul>
+		<details>
+	<summary>Struct</summary>
 - Là kiểu dữ liệu do người dùng tự định nghĩa.
 - Kích thước của Struct là bằng tổng kích thước của các member cộng lại cộng thêm bộ nhớ đệm (nếu có).
 - Cách khai báo và cách tính kích thước của Struct:
@@ -258,12 +262,19 @@ struct mang{
 ```
 </details>
 
+***
+
 <details>
-	<summary><h3>Union</h3></summary>
+	<summary>Union</summary>
 - Là kiểu dữ liệu do người dùng tự định nghĩa.  
 - Kích thước của Union là kích thước của member lớn nhất có trong Union.
 - Union là bộ nhớ dùng chung nên khi thay đổi giá trị của một member này thì sẽ ảnh hưởng đến kết quả của những member khác.
 - Ứng dụng của Union trong thực tế là thiết kế một kiểu dữ liệu mà chỉ được phép chọn 1 trong đó.
+</details>
+
+***
+
+</ul>
 </details>
 
 <details>
