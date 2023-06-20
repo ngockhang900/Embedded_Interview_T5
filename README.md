@@ -136,87 +136,9 @@ int main(int argc, char const *argv[])
     return 0;
 }
 ```
-		</details>
-	</ul>
- 
-Được diễn ra ở quá trình tiền xử lý. Bản chất của Macro là thay thế đoạn code được khai báo macro `#define` vào bất cứ chỗ nào xuất hiện macro đó.
-
-Macro không phải là hàm cũng không phải là biến nó chỉ là một định nghĩa.
-
-Khi dùng Macro thì cái size của chương trình sẽ lớn. Nhưng tốc độ xử lý nhanh.
-- Ví dụ:
-Ta có file `main.c` có khai báo Macro như sau:
-```c
-#define MAX 100
-
-int main(int argc, char const *argv[])
-{
-    printf("MAX = %d", MAX);
-
-    uint8_t a = MAX + 50;
-
-    return 0;
-} 
-```
-Sau khi qua quá trình tiền xử lý, thì trong file `main.i` , ở đâu có chứ **MAX** thì sẽ được thay thế bằng **100**.
-```c
-int main(int argc, char const *argv[])
-{
-    printf("MAX = %d", 100);
-
-    uint8_t a = 100 + 50;
-
-    return 0;
-}
-```
-- Ngoài ra thì Macro còn có thể định nghĩa được một hàm theo kiểu Macro
-```c
-#define SUM(a,b) a+b 
-
-int main(int argc, char const *argv[])
-{
-    printf("Tong a va b = %d\n", SUM(9,10));
-
-    return 0;
-} 
-```
-Thì trong file `main.i` nó cũng thay thế **SUM(9,10)** bằng **9+10**
-```c
-int main(int argc, char const *argv[])
-{
-    printf("Tong a va b = %d\n", 9+10);
-    
-    return 0;
-}
-```
-- Còn có thể viết như thế này: 
-```c
-#define CREATE(Ten_ham, noi_dung)    \
-void Ten_ham(){                      \
-    printf("%s\n", noi_dung);        \
-}
-// Ở trong Macro để viết chương trình có thể xuống dòng thì ta dùng dấu `\`.
-CREATE(test,"Day la ham Macro");
-
-int main(int argc, char const *argv[])
-{
-    test();
-    return 0;
-} 
-```
-Như ta thấy khi qua quá trình tiền xử lý thì trong file `main.i` nó sẽ tạo ra một hàm.
-```c
-void test(){
-   printf("%s\n", "Day la ham Macro"); 
-   }
-
-int main(int argc, char const *argv[])
-{
-    test();
-    return 0;
-}
-```
 </details>
+
+***
 
 <details>
 	 <summary>Function</summary>
@@ -238,6 +160,8 @@ Sau khi thực hiện xong thì vào Stack Pointer để lấy địa chỉ đã
 :star: Function bình thường là một địa chỉ cố định và phải cần sử dụng Programe Couter và Stack Pointer để trỏ được con trỏ PC. Suy ra làm cho tốc độ xử lý của chương trình chậm. Size sẽ nhỏ.
 </details>
 
+***
+
 <details>
 	<summary>Inline Function</summary>
 
@@ -245,11 +169,14 @@ Sau khi thực hiện xong thì vào Stack Pointer để lấy địa chỉ đã
 
 - Làm cho kích thước của file lớn hơn nhưng tốc độ xử lý sẽ nhanh hơn.
 </details>
+
+***
+
 </details>
 
 <details>
 	<summary><h3>Thao Tác Bit</h3></summary>
-- **AND: x = y & z;**
+- **AND: x = y & z;
 
 | A| B | A & B |
 | :--- | :--- | :-
@@ -258,14 +185,14 @@ Sau khi thực hiện xong thì vào Stack Pointer để lấy địa chỉ đã
 | 0 | 1 | 0 |
 | 1 | 1 | 1 |
 
-- **NOT: x = ~ y;**
+- **NOT: x = ~ y;
 
 | A| ~A |
 | :--- | :--- 
 | 0 | 1 | 
 | 1 | 0 | 
 
-- **OR: x = y | z;**
+- **OR: x = y | z;
 
 | A| B | A OR B |
 | :--- | :--- | :-
@@ -274,7 +201,7 @@ Sau khi thực hiện xong thì vào Stack Pointer để lấy địa chỉ đã
 | 0 | 1 | 1 | 
 | 1 | 0 | 1 | 
 
-- **XOR: x = y ^ z;**
+- **XOR: x = y ^ z;
 
 | A| B | A ^ B |
 | :--- | :--- | :-
