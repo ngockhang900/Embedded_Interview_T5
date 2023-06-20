@@ -375,9 +375,10 @@ const int *ptr = &num; //thay đổi được địa chỉ của a nhưng không
 		<ul>
 			public: được truy cập từ bên ngoài vào một cách tùy ý là cho phép bên ngoài nhìn thấy và có thể sử dụng một cách trực <br>
 			private: chỉ có thể được nhìn thấy và sử dụng ở bên trong nội bộ của class đó thôi <br>
-			
+			protected: Class con kế thừa có thể sử dụng member trong protected 
 		</ul>
-  	- Constructor: tên khai báo của nó sẽ trùng với tên Class, thường được code đầu tiền và nằm trong public, nó có thể có tham số đầu vào hoặc ko có tham số đầu vào. Khi tạo một object thì constructor sẽ khởi tạo đầu tiền 
+  	- Constructor: tên khai báo của nó sẽ trùng với tên Class, thường được code đầu tiền và nằm trong public, nó có thể có tham số đầu vào hoặc ko có tham số đầu vào. Khi tạo một object thì constructor sẽ khởi tạo đầu tiền. Ứng dụng là khi muốn set thông số khỏi tạo thông số đầu tiên<br>
+   	:star: Kế thừa public: có thể ghi đề ( 
  	- Khai báo Class:
   
   ```c++
