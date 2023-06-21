@@ -373,13 +373,13 @@ const int *ptr = &num; //thay đổi được địa chỉ của a nhưng không
 	- Cấu trúc của một Class sẽ gồm: Đầu tiền là class, sau đó là tên class, tiếp theo là phạm vi truy cập, rồi tới member ( member có thể là variable, hàm, array ).<br>
 	- Phạm vi truy cập:
 		<ul>
-			public: được truy cập từ bên ngoài vào một cách tùy ý là cho phép bên ngoài nhìn thấy và có thể sử dụng một cách trực <br>
+			public: được truy cập từ bên ngoài vào một cách tùy ý là cho phép bên ngoài nhìn thấy và có thể sử dụng một cách trực tiếp <br>
 			private: chỉ có thể được nhìn thấy và sử dụng ở bên trong nội bộ của class đó thôi <br>
 			protected: Class con kế thừa có thể sử dụng member trong protected 
 		</ul>
-  	- Constructor: tên khai báo của nó sẽ trùng với tên Class, thường được code đầu tiền và nằm trong public, nó có thể có tham số đầu vào hoặc ko có tham số đầu vào. Khi tạo một object thì constructor sẽ khởi tạo đầu tiền. Ứng dụng là khi muốn set thông số khỏi tạo thông số đầu tiên<br>
+  	- Constructor: tên khai báo của nó sẽ trùng với tên Class, thường được code đầu tiền và nằm trong public, nó có thể có tham số đầu vào hoặc ko có tham số đầu vào. Khi tạo một object thì constructor sẽ khởi tạo đầu tiên. Ứng dụng là khi muốn set thông số khỏi tạo thông số đầu tiên<br>
    	:star: Kế thừa public: có thể ghi đề<br>
-	Static trong Class cần phải khởi tạo một lần đầu để nó lấy địa chỉ đó để nó làm địa chỉ cố định nếu không sẽ bị lỗi (khi đó biến được gán từ khóa Static sẽ là biến có địa chỉ dùng chung cho tất cả object trỏ vào biến đó.<br>
+	Static trong Class cần phải khởi tạo một lần đầu để nó lấy địa chỉ đó để nó làm địa chỉ cố định nếu không sẽ bị lỗi (khi đó biến được gán từ khóa Static sẽ là biến có địa chỉ dùng chung cho tất cả object trỏ vào biến đó).<br>
  	- Khai báo Class:
   
   ```c++
