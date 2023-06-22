@@ -401,5 +401,13 @@ const int *ptr = &num; //thay đổi được địa chỉ của a nhưng không
 	:star: Tính trừu tượng: là một khả năng mà chương trình có thể bỏ qua sự phức tạp bằng cách tập trung vào cốt lõi của thông tin cần xử lý.<br>
 	Eg: Như máy giặc ta chỉ cần bỏ đồ vào và bấm nút còn bên trong máy giặc, giặc như thế nào ta không cần quan tâm.<br>
 	:star: Tính đóng gói: Các thuộc tính phải được nằm trong private để gán giá trị cho nó hoặc lấy giá trị của nó ra thì phải thông qua. Ý nghĩa là tránh cho người dùng cang thiệp vào và sửa đổi dữ liệu.<br>
+	:star: Namespace: là một không gian để khai báo biến và hàm, những hàm và biến ở trong namespace sẽ được tác biện cách ly với những hàm biến bên ngoài giúp cho chương trình phân biệt được hàm biến này thuộc namespace nào. Trong namespace có thể chứa mọi. Câu lệnh ( using namespace std ) có ý nghĩa là tất cả các hàm và các biến có trogn chương trình nếu như có trong std(Standard Template Library) thì sử dụng mà không cần phải gọi (std::).<br>
+</details>
+
+<details>
+	<summary><h3>Vector, List, Map</h3></summary>
+	:star: auto: là kiểu dữ liệu phụ thuộc vào giá trị mà nó được gán.<br>
+	Eg: Nếu giá trị được gán là số nguyên thì auto là kiểu int, gán địa chỉ thì auto là kiểu con trỏ.<br>
+	:star: Mảng nhân tạo: 
 </details>
 
