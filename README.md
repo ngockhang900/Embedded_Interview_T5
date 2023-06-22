@@ -395,5 +395,11 @@ const int *ptr = &num; //thay đổi được địa chỉ của a nhưng không
 
 <details>
 	<summary><h3>Object Oriented Programming (OOP)</h3></summary>
+	:star: Tính đa hình: là cùng một phương thức với các input khác nhau thì sẽ cho ra các kết quả khác nhau. Trong một Class thì những method có thể trùng tên nhau nhưng phải khác input parameter.<br>
+	Eg: Cách di chuyển. Khi input là người thì cách di chuyển là hai chân, input là mèo thì cách di chuyển là bốn chân, input là cá thì cách di chuyển là đuôi. Hoặc ví dụ về loại nhạc cụ.<br>
+	:star: Templat: ứng dụng khi code những hàm gần giống tương tự nhau chỉ khác những input hoặc kiểu trả về còn font giống nhau thì sử dung template.<br>
+	:star: Tính trừu tượng: là một khả năng mà chương trình có thể bỏ qua sự phức tạp bằng cách tập trung vào cốt lõi của thông tin cần xử lý.<br>
+	Eg: Như máy giặc ta chỉ cần bỏ đồ vào và bấm nút còn bên trong máy giặc, giặc như thế nào ta không cần quan tâm.<br>
+	:star: Tính đóng gói: Các thuộc tính phải được nằm trong private để gán giá trị cho nó hoặc lấy giá trị của nó ra thì phải thông qua. Ý nghĩa là tránh cho người dùng cang thiệp vào và sửa đổi dữ liệu.<br>
 </details>
 
