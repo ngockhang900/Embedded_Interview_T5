@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 class Animal{
@@ -8,6 +9,5 @@ class Animal{
         int16_t age;
         int16_t weight;
     public:
-        
 
 };
