@@ -54,7 +54,7 @@ uint8_t *ptr = (uint8_t *)malloc(sizeof (uint8_t) * size);
 </details>
 
 <details>
-	<summary><h3>Macro, Function, InlineFunction</h3></summary>
+	<summary><h3>Macro - Function - InlineFunction</h3></summary>
 	<ul>
 		<details>
 			<summary>Macro</summary>
@@ -244,7 +244,7 @@ portD ^= (1 << n);
 </details>
 
 <details>
-	<summary><h3>Struct, Union</h3></summary>
+	<summary><h3>Struct - Union</h3></summary>
 	<ul>
 		<details>
 	<summary>Struct</summary>
@@ -370,7 +370,7 @@ const int *ptr = &num; //thay đổi được địa chỉ của a nhưng không
 <details>
 	<summary><h3>Class</h3></summary>
 	- Class là kiểu dữ liệu do người dùng tự định nhưng nó khác với Struct về nhiều thứ. Địa chỉ của một object sẽ bằng địa chỉ member đầu tiên của nó. <br>
-	- Cấu trúc của một Class sẽ gồm: Đầu tiền là class, sau đó là tên class, tiếp theo là phạm vi truy cập, rồi tới member ( member có thể là variable, hàm, array ).<br>
+	- Cấu trúc của một Class sẽ gồm: Đầu tiền là class, sau đó là tên class, tiếp theo là phạm vi truy cập, rồi tới member có hai member là property và method.( member có thể là variable, hàm, array ). Biến của Class gọi là Object.<br>
 	- Phạm vi truy cập:
 		<ul>
 			public: được truy cập từ bên ngoài vào một cách tùy ý là cho phép bên ngoài nhìn thấy và có thể sử dụng một cách trực tiếp <br>
@@ -405,9 +405,28 @@ const int *ptr = &num; //thay đổi được địa chỉ của a nhưng không
 </details>
 
 <details>
-	<summary><h3>Vector, List, Map</h3></summary>
+	<summary><h3>Vector - List - Map</h3></summary>
 	:star: auto: là kiểu dữ liệu phụ thuộc vào giá trị mà nó được gán.<br>
 	Eg: Nếu giá trị được gán là số nguyên thì auto là kiểu int, gán địa chỉ thì auto là kiểu con trỏ.<br>
-	:star: Mảng nhân tạo: 
+	:star: Vector: <ul>
+		- Là mảng động ( có thể thay đổi trong suốt quá trình làm việc của chương trình ), có thể chứa kiểu dữ liệu bất kì.<br>
+		- Trước khi sử dụng, cần include thư viện "vector".<br>
+		- Vector sử dụng  các ô nhớ liên tiếp cho các phần tử của chúng, mảng sẽ tự tăng kích thước khi 1 phần tử mới được thêm vào, sự thật là tạo một mảng mới và di chuyển các phần tử của nó tới mảng mới này. 		  Đây là một nhiệm vụ tương đối tốn kém về thời gian xử lý.<br>
+		- So sánh với mảng tĩnh, vector tiêu thụ bộ nhớ hơn để đổi lấy khả năng quản lý lưu trữ và tăng kích thước động một cách hiệu quả.<br>
+	</ul>
+	:star: List: <ul>
+		- List là một danh sách chứa các đối tượng (các nút (node) – lưu trữ các thông tin dữ liệu và địa chỉ của nút kế tiếp, nút trước đó) liên kết với nhau và cho phép chèn thêm hay xóa bất kì một đối tượng nào trong danh sách.<br>
+	</ul>
+	:star: Map: <ul>
+		Map là một tập hợp các mục, mỗi mục bao gồm một Key và một Value . Trong Map, tất cả các Key được yêu cầu là duy nhất, nhưng các giá trị có thể được lặp lại. Map có ba phương pháp chính:<br>
+			- Một để thêm cặp Key - Value được chỉ định<br>
+			- Một để lấy giá trị cho một Key nhất định<br>
+			- Một để xóa cặp Key - Value khỏi bản đồ <br>
+	</ul>
+</details>
+
+<details>
+	<summary><h3>VitualFunction</h3></summary>
+	
 </details>
 
