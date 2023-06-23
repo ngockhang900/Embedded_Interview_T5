@@ -2,6 +2,7 @@
     "files.associations": {
         "stdio.h": "c",
         "test.h": "c",
-        "checkdate.h": "c"
+        "checkdate.h": "c",
+        "iostream": "cpp"
     }
 }
