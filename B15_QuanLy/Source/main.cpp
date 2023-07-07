@@ -22,11 +22,11 @@ class MonAn{
         double GIA;
     public:
         MonAn(string ten, double gia);
-        uint8_t getID();
+        uint8_t getID()const;
         void setTen();
-        string getTen();
+        string getTen()const;
         void setGia();
-        double getGia();
+        double getGia()const;
 };
 
 MonAn::MonAn(string ten, double gia) {
@@ -36,7 +36,7 @@ MonAn::MonAn(string ten, double gia) {
     GIA = gia;
 }
 
-uint8_t MonAn::getID() {
+uint8_t MonAn::getID()const {
     return ID;
 }
 
@@ -45,7 +45,7 @@ void MonAn::setTen() {
     cin >> TEN;
 }
 
-string MonAn::getTen() {
+string MonAn::getTen()const {
     return TEN;
 }
 
@@ -54,7 +54,7 @@ void MonAn::setGia() {
     cin >> GIA;
 }
 
-double MonAn::getGia() {
+double MonAn::getGia()const {
     return GIA;
 }
 
@@ -215,7 +215,10 @@ class ThongTinBan{
         void suaMon(uint8_t id, uint8_t soLuong);
         void xoaMon(uint8_t id);
 };
-
+ThongTinBan::ThongTinBan(uint8_t soBan, bool trangThai){
+    this->SO_BAN = soBan;
+    this->TRANG_THAI = trangThai;
+}
 void ThongTinBan::xoaMon(uint8_t id){
 
     auto position = DATABASE_MON_AN.begin();
