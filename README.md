@@ -1,6 +1,9 @@
 
 # **Embedded_Interview_T5**
 <details>
+	<summary><h2>C Programming Language</h2></summary>
+
+<details>
 	<summary><h3>Compiler</h3></summary>
 	
 Dịch từ ngôn ngữ do lập trình viên viết (C/C++, PHP, HTML,... ) sang ngôn ngữ máy.
@@ -367,6 +370,11 @@ const int *ptr = &num; //thay đổi được địa chỉ của a nhưng không
 - Sử dụng biến con trỏ sai cách.
 </details>
 
+</details>
+
+<details>
+	<summary><h2>C++ Programming Language</h2></summary>
+
 <details>
 	<summary><h3>Class</h3></summary>
 	- Class là kiểu dữ liệu do người dùng tự định nhưng nó khác với Struct về nhiều thứ. Địa chỉ của một object sẽ bằng địa chỉ member đầu tiên của nó. <br>
@@ -426,7 +434,91 @@ const int *ptr = &num; //thay đổi được địa chỉ của a nhưng không
 </details>
 
 <details>
-	<summary><h3>VitualFunction</h3></summary>
-	
+	<summary><h3>VirtualFunction</h3></summary>
+	- Virtual Function là khi một hàm được khai báo Virtual thì ở class con kế thừa khi gọi hàm Virtual thì nó sẽ load lại thằng mới nhất tại class con gọi là Overload.
+	- Khi object là một class con và trỏ đến method của class cha, trong method class cha sẽ gọi những method khác. Những method đó nếu là kiểu Virtual function thì lúc đó nó sẽ lấy những function cùng cái tên đó mà được định nghĩa lại từ class con. 
 </details>
 
+<details>
+	<summary><h3>Lambda</h3></summary>
+	- Lambda cho phép định nghĩa một hàm sau đó sử dụng luôn 
+ Cú pháp: <br>
+	
+ ```c++
+	[ captures ] ( parameters ) -> return_type {
+	    // body of the lambda function
+	}
+```
+Ví dụ: <br>
+
+```c++
+#include <iostream>
+
+int main() {
+    int a = 5;
+    int b = 10;
+
+    // Định nghĩa một lambda function để tính tổng của hai số
+    auto sum = [](int x, int y) -> int {
+        return x + y;
+    };
+
+    // Gọi lambda function
+    int result = sum(a, b); // Kết quả là 15
+    std::cout << "Result: " << result << std::endl;
+
+    return 0;
+}
+```
+</details>
+
+</details>
+
+<details>
+	<summary><h2>Embedded Knowledge</h2></summary>
+
+ <details>
+	<summary><h3>SPI (Serial Peripheral Interface)</h3></summary>
+
+  ![](https://exploreembedded.com/wiki/images/2/26/Spi_diagram.png) <br>
+  SPI là một chuẩn giao tiếp 4 dây gồm có: <br>
+  - Chân xung Clock <br>
+  - Chân MOSI <br>
+  - Chân MISO <br>
+  - Chân SS <br>
+  SPI có thể một master giao tiếp với nhiều slave thông qua chân SS, để giao tiếp thì chân SS của con slave đó sẽ kéo xuống mức thấp để cho phép master giao tiếp được với slave, trong cùng một thời điểm thì master có thể vừa truyền vừa nhận data, master giao tiếp với slave sẽ có 4 mode truyền dữ liệu phụ thuộc vào SPOL (là hình dạng xung Clock, nếu CPOL bằng 0 thì đầu tiền khi chưa truyền data thì xung Clock là mức 0 và ngược lại khi CPOL bằng 1) và SPHA (là cách truyền, khi đưa data vào chân MOSI trước sau đó dùng xung Clock để đẩy nó đi thì khi đó CPHA bằng 0 còn CPHA bằng 1 là cho trước một xung Clock sau đó đưa data vào rồi xung Clock tiếp thep nó mới đẩy data đi). <br>
+ </details>
+
+<details>
+	<summary><h3>I2C (Inter-Integrated Circuit)</h3></summary>
+	
+![](https://talucgiahoang.com/wp-content/uploads/2021/09/b6-i2c.png) <br>
+
+I2C là chuẩn giao tiếp 2 dây gồm có: Chân SDA và chân SCL. I2C cũng có thể master giao tiếp với nhiều slave thông qua địa chỉ của slave đó, trong một thời điểm thì master chỉ có thể truyền hoặc nhận data vì chỉ có một dây truyền nhận là SDA. <br>
+
+![](https://911electronic.com/wp-content/uploads/2020/07/I2C-data-frame.jpg) <br>
+
+Về chế độ truyền của I2C thì nó sẽ truyền theo các Messge. <br>
+Đầu tiên nó sẽ gửi Start bit, Start bit này là SDA sẽ kéo mức điện áp từ mức cao xuống mức thấp, sau đó SCL sẽ kéo từ mức cáo xuống mức thấp. <br>
+Sau đó sẽ gửi 7 hoặc 10 bit địa chỉ kèm với 1 bit read/write (bit này sẽ thông cho slave là master đang muốn gửi dữ liệu đến slave hay muốn nhận dữ liệu từ slave ). <br>
+Nếu mà slave đã nhận được dữ liệu thì slave sẽ trả về một bit ACK ở mức thấp, sau khi master đã nhận được bit ACK(bit 0) thì nó biết là truyền dữ liệu thành công. Mỗi lần master truyền một byte thì slave có một khoảng timeout cố định nếu trong timeout mà slave không nhận đủ một byte thì lỗi truyền.<br>
+Tiếp theo master sẽ truyền 8 bit data, sau đó nó sẽ đợi slave phản hồi lại ACK nếu nhận được thì nó sẽ truyền byte tiếp theo, cứ như vây nó truyền hết data mình muốn truyền đi. <br>
+Cuối cùng để kết thúc thì nó gửi một Stop bit, Stop bit đầu tiên nó sẽ kéo SCL từ mức thấp lên mức cao, sau đó SDA kéo từ mức thấp lên mức cao. <br>
+</details>
+
+<details>
+	<summary><h3>UART (Universal Asynchronous Receiver/Transmitter)</h3></summary>
+	
+![](https://th.bing.com/th/id/OIP.QcsObqBdFjpGpeBPBxGihwHaDt?pid=ImgDet&rs=1) <br>
+
+UART là một chuẩn giao tiếp 2 dây gồm có: Chân Tx truyền data và chân Rx nhận data, UART chi có 2 con MCU kết nối được với nhau, trong một thời điểm thì nó có thể vừa truyền vừa nhận dữ liệu. <br>
+
+![](https://th.bing.com/th/id/R.8472a594e27c744cee0fef740107c146?rik=SG7n%2bey0%2fdYkzQ&riu=http%3a%2f%2fwww.circuitbasics.com%2fwp-content%2fuploads%2f2016%2f01%2fIntroduction-to-UART-Packet-Frame-and-Bits-2.png&ehk=hU4AFdwHOorAeCqAJwOv%2bTmjILP184pglD16vPcVpQA%3d&risl=&pid=ImgRaw&r=0) <br>
+
+UART sẽ truyền qua các Packet. <br>
+Đầu tiên nó sẽ gửi một Start bit, Start bit này kéo từ mức điện áp cao xuống mức điện áp thấp. <br>
+Sau đó thì sẽ gửi từ 5 đến 9 bit data kết hợp với 1 bit chẵn/lẻ (bit chẵn/lẻ này sẽ kiểm tra xem dữ liệu có bị thay đổi trong quá trình truyền hay không). <br>
+Cuối cùng để kết thúc thì nó sẽ gửi 1 đến 2 Stop bit, Stop bit này kéo từ mức thấp lên mức cao.
+ 
+</details>
+</details>
