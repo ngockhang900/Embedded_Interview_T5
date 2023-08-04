@@ -438,7 +438,7 @@ const int *ptr = &num; //thay đổi được địa chỉ của a nhưng không
 
 <details>
 	<summary><h3>VirtualFunction</h3></summary>
-	- Virtual Function là khi một hàm được khai báo Virtual thì ở class con kế thừa khi gọi hàm Virtual thì nó sẽ load lại thằng mới nhất tại class con gọi là Overload.
+	- Virtual Function là khi một hàm được khai báo Virtual thì ở class con kế thừa khi gọi hàm Virtual thì nó sẽ load lại thằng mới nhất tại class con gọi là Overload. <br>
 	- Khi object là một class con và trỏ đến method của class cha, trong method class cha sẽ gọi những method khác. Những method đó nếu là kiểu Virtual function thì lúc đó nó sẽ lấy những function cùng cái tên đó mà được định nghĩa lại từ class con. 
 </details>
 
