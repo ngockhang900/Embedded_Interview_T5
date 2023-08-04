@@ -2,6 +2,7 @@
 # **Embedded_Interview_T5**
 <details>
 	<summary><h2>C Programming Language</h2></summary>
+ <ul>
 
 <details>
 	<summary><h3>Compiler</h3></summary>
@@ -282,7 +283,8 @@ struct mang{
 
 <details>
 	<summary><h3>Static</h3></summary>
-- **Static cục bộ:** Khi một biến cục bộ được khai báo với từ khóa Static. Thì biến đó sẽ chỉ khỏi tạo một lần duy nhất và tồn tại suốt thời gian chạy chương trình. Giá trị của nó không bị mất đi ngay cả khi kết thúc hàm. Tuy nhiên khác với biến toàn cục có thể gọi trong tất cả mọi nơi trong chương trình, thì biến cục bộ Static chỉ có thể được gọi trong nội bộ hàm khỏi tạo ra nó. Mỗi lần hàm được gọi, giá trị của biến chính bằng giá trị tại lần gần nhất hàm được gọi.
+	
+- **Static cục bộ:** Khi một biến cục bộ được khai báo với từ khóa Static. Thì biến đó sẽ chỉ khỏi tạo một lần duy nhất và tồn tại suốt thời gian chạy chương trình. Giá trị của nó không bị mất đi ngay cả khi kết thúc hàm. Tuy nhiên khác với biến toàn cục có thể gọi trong tất cả mọi nơi trong chương trình, thì biến cục bộ Static chỉ có thể được gọi trong nội bộ hàm khỏi tạo ra nó. Mỗi lần hàm được gọi, giá trị của biến chính bằng giá trị tại lần gần nhất hàm được gọi.<br>
 - **Static toàn cục:** Biến toàn cục Static sẽ chỉ có thể được truy cập và sử dụng trong file khai báo nó, các file khác không có cách nào truy cập được. 
 </details>
 
@@ -371,9 +373,10 @@ const int *ptr = &num; //thay đổi được địa chỉ của a nhưng không
 </details>
 
 </details>
-
+</ul>
 <details>
 	<summary><h2>C++ Programming Language</h2></summary>
+ <ul>
 
 <details>
 	<summary><h3>Class</h3></summary>
@@ -473,9 +476,10 @@ int main() {
 </details>
 
 </details>
-
+</ul>
 <details>
 	<summary><h2>Embedded Knowledge</h2></summary>
+ <ul>
 
  <details>
 	<summary><h3>SPI (Serial Peripheral Interface)</h3></summary>
@@ -521,4 +525,28 @@ Sau đó thì sẽ gửi từ 5 đến 9 bit data kết hợp với 1 bit chẵn
 Cuối cùng để kết thúc thì nó sẽ gửi 1 đến 2 Stop bit, Stop bit này kéo từ mức thấp lên mức cao.
  
 </details>
+
+<details>
+	<summary><h3>INTERRUP</h3></summary>
+
+ - Interrup (ngắt) là một sự kiện khẩn cấp bên trong hoặc bên ngoài bộ vi điều khiển xảy ra, buộc vi điều khiển tạm dừng thực hiện chương trình hiện tại, phục vụ ngay lập tức nhiệm vụ mà ngắt yêu cầu - nhiệm vụ này gọi là trình phục vụ ngắt (ISR: Interrup Service Routine). <br>
+ - Ngắt nào mình muốn sử dụng thì phải đăng ký ngắt đó vào bảng vector ngắt (ISR). <br>
+ - Trong bảng vector ngắt thì ngắt Reset là một ngắt đặt biệt và có độ ưu tiên cao nhất. Mỗi ngắt có thứ tự ưu tiên ngắt, ngắt có số thứ tự càng thấp thì mức độ ưu tiên càng cao. <br>
+ - Ngắt ngoài: vi điều khiển sẽ có một số chân hỗ trợ ngắt, ngắt ngoài là một tín hiệu được tạo ra từ bên ngoài vi điều khiển (thường là một ngõ vào hoặc cảm biến) và được sử dụng để tạm dừng thực thi chương trình hiện tại, để thực hiện một hàm xử lý ngắt. <br>
+ - Ngắt truyền thông: là một cơ chế trong vi điều khiển cho phép nhanh chóng xử lý dữ liệu mới nhận được từ các giao tiếp truyền thông. Khi có dữ liệu mới, vi điều khiển tự động dừng công việc hiện tại và xử lý dữ liệu đó mà không cần chờ đợi. <br>
+ ⭐ Hoạt động của ngắt trong chương trình:
+- Đầu tiên chương trình chạy, khi gặp ngắt 1 thì nó sẽ chạy xong địa chỉ hiện tại và lưu địa chỉ tiếp theo (địa chỉ 1) vào StackPoint. Sau đó con trỏ PC sẽ trỏ đến phần vùng của ngắt 1 và chạy chương trình ngắt 1, nếu trong quá trình chạy gặp phải ngắt 2 thì nó sẽ so sánh mức độ ưu tiên. <br>
+<ul>
+	
+- Nếu ngắt 2 có mức độ ưu tiên cao hơn thì lúc này nó sẽ chạy xong địa chỉ nó dã chạy và lưu địa chỉ tiếp theo (địa chỉ 2)vào StackPoint. Sau đó con trỏ PC trỏ để phân vùng của ngắt 2 và chạy chương trình của ngắt 2, sau khi chạy hết chương trình ngắt 2 thì nó sẽ vào StackPoint để lấy địa chỉ gần nhất được lưu vào trong StackPoint (là địa chỉ 2) để chạy tiếp chương trình, lúc này con trọ PC đang ở phân vùng ngắt 1 sau khi chạy xong chương trình ngắt 1 thì nó sẽ vào StackPoint để lấy (địa chỉ 1) và chạy cho đến hết chương trình. <br>
+- Nếu ngắt 2 có mức độ ưu tiên thấp hơn thì lúc này nó sẽ chạy xong chương trình của ngắt 1, sau đó nó qua lại kiểm tra xem ngắt 2 còn không. Nếu còn thì nó sẽ chạy ngắt ngoại, sau khi chạy xong chương trình ngắt 2 thì nó sẽ vào StackPoint để nó lấy địa chỉ 1 để nó chạy cho hết chương trình. Còn nếu ngắt 2 không còn nữa thì nó sẽ vào StackPoint để lấy địa chỉ 1 và chạy cho hết chương trình.
+
+</ul>
 </details>
+
+<details>
+	<summary><h3>TIMER</h3></summary>
+</details>
+
+</details>
+</ul>
