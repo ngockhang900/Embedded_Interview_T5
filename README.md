@@ -548,5 +548,54 @@ Cuối cùng để kết thúc thì nó sẽ gửi 1 đến 2 Stop bit, Stop bit
 	<summary><h3>TIMER</h3></summary>
 </details>
 
+<details>
+	<summary><h3>CAN (Controller Area NetWork)</h3></summary>
+
+- CAN (Controller Area NetWork) là công nghệ mạng nối tiếp, tốc độ cao, có hai dây là CAN High và CAN Low. Và hai dây này sẽ bắt xoắn dây lại với nhau vì trong mạch điện sẽ có nhiều nguồn điện khác sẽ tạo ra từ trường mà khi hai dây bắt song song thì lúc đó khoảng cách của hai dây với từ trường là khác nhau nên độ nhiễu của hai dây là khác nhau vì vậy việc bắt xoắn dây giúp cho khoảng cách của hai dây đến với nguồn phát ra từ trường là bằng nhau nên nhiễu của hai dây là như nhau. Mà khi đó receive đọc được CAN H và CAN L bằng cách tính trị tuyệt đối của hiệu CAN H trừ CAN L để xác định được đó là bit 0 hay bit 1 nên khi có nhiễu thì hiệu của nó không thay đổi. <br>
+- Hai đầu dây của mạng CAN sẽ có hai điện trở 120 theo tiêu chuẩn CAN 2.0. <br>
+- Giao thức CAN có rất nhiều node. Mỗi node bao gồm: một MCU, một CAN Controller và một CAN Transmit/Receive (CAN Transceicer). <br>
+- Giao thức CAN truyền theo 2 dạng: là CAN low speed và CAN high speed. <br>
+<ul>
+	- CAN low speed: <br>
+	<ul>
+		- Có tốc độ là 125kb/s. <br>
+		- Số nút trên bus là 2 tới 20. <br>
+		- Ở trạng thái dominant (0) thì CAN H = 4V, CAN L = 1V. <br>
+		- Ở trạng thái recessive (1) thì CAN H = 1.75V, CAN L = 3.25V. <br>
+	</ul>
+	- CAN high speed: <br>
+	<ul>
+		- Có tốc độ là 125kb/s tới 1Mb/s. <br>
+		- Số nút trên bus là 2 tới 30. <br>
+		- Ở trạng thái dominant (0) thì CAN H = 3.25V, CAN L = 1.5V. <br>
+		- Ở trạng thái recessive (1) thì CAN H = 2.5V, CAN L = 2.5V. <br>
+	</ul>
+</ul>
+- Cách truyền nhận dữ liệu của CAN: <br>
+<ul>
+	- Khi truyền: thì MCU sẽ gửi tín hiệu mức logic bit 0 hoặc bit 1, và đưa bit đó vào CAN Controller, sau khi CAN Controller nhận được tín hiệu mức logic bit 0 hoặc bit 1 thì nó sẽ điều khiển CAN Transceiver xuất điện áp ra hai chân CAN High và CAN Low. <br>
+	- Khi nhận: Khi CAN Transceiver nhận được điện áp từ hai chân CAN High và CAN Low theo đường receive, thì nó sẽ truyền cho CAN Controller xử lý là lấy trị tuyệt đối của hiệu CAN High trừ CAN Low. Nếu kết quả lớn hơn hoặc bằng 3 thì là bit 0 còn bé hơn hoặc bằng 1.75 thì là bit 1, sau đó nó sẽ đưa bit đó lên cho MCU.<br>
+</ul>
+
+- Theo cơ chế của CAN thì node nào ID càng nhỏ thì sẽ có độ ưu tiên càng cao.
+- Data Frame CAN theo tiêu chuẩn CAN 2.0 gồm bảy trường bit:
+<ul>
+	- Đầu tiên là bit bắt đầu được gọi là Start Of Frame, bit đầu tiên này là một dominant bit (mức logic 0). <br>
+	- Tiếp theo là 12 bit bao gồm 11 bit ID và 1 bit RTR (Remote Transmission Request). Bit Remote Transmission Request là bit dùng dể phân biệt khung, nếu Data frame (khung dữ liệu) thì bit này là Dominant bit còn nếu Remote frame (khung yêu cầu) thì bit này là Recessive bit. <br>
+	- Sau đó nó sẽ có 2 bit đệm là r0 và r1 <br>
+	- Tiếp theo nó sẽ gửi 4 bit DLC (Data Length Code), 4 bit này biểu thị số thập phân từ 0 đến 8, để quy định số byte dữ liệu cần gửi.<br>
+	- Tiếp theo là Data field, trường này có độ dài từ 0 đến 8 byte tùy vào giá trị của DLC. <br>
+	- Tiếp theo là 15 bit CRC (Cyclic Redundancy Check) để kiểm tra tổng bit từ trường bắt đầu (SOF) đến trường dữ liệu (Data Field) và 1 bit đệm để ngăn cách phân cách trường CRC
+với trường ACK <br>
+	- Tiếp theo là một bit ACK ((Acknowledge) để xác nhận là đã nhận được dữ liệu hay chưa. Sau bit ACK là một bit đệm. <br>
+	- Cuối cùng là 7 bit kết thúc (End Of Frame).
+</ul>
+</details>
+
+
 </details>
 </ul>
+
+<details>
+	<summary><h2>Unittest</h2></summary>
+</details>
