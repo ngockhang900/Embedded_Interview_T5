@@ -254,7 +254,8 @@ portD ^= (1 << n);
 	<summary>Struct</summary>
 - Là kiểu dữ liệu do người dùng tự định nghĩa.
 - Kích thước của Struct là bằng tổng kích thước của các member cộng lại cộng thêm bộ nhớ đệm (nếu có).
-- Cách khai báo và cách tính kích thước của Struct:
+- Cách khai báo và cách tính kích thước của Struct:<br>
+			
 ```c
 struct mang{ 
 // trong các member thì 64 bit (8 byte) là lớn nhất nên một lần quét sẽ là 8 byte 
